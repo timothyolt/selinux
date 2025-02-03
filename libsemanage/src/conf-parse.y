@@ -49,6 +49,9 @@ static external_prog_t *new_external;
 static int parse_errors;
 
 #define PASSIGN(p1,p2) { free(p1); p1 = p2; }
+#if !defined(__GLIBC__)
+#define basename(src) (strchr(src, '/') ? strchr(src, '/') + 1 : src)
+#endif
 
 %}
 
